@@ -1,9 +1,9 @@
 # spring-boot
 
-自动配置	
+自动配置
 	springboot-starter
 	
-配置	
+bean配置	
 	springboot-configure	
 	
 生命周期	
