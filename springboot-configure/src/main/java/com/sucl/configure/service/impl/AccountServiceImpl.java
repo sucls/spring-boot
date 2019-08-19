@@ -1,5 +1,6 @@
 package com.sucl.configure.service.impl;
 
+import com.sucl.configure.model.Account;
 import com.sucl.configure.service.AccountService;
 
 /**
@@ -7,4 +8,9 @@ import com.sucl.configure.service.AccountService;
  * @since 2019/8/19
  */
 public class AccountServiceImpl implements AccountService {
+
+    @Override
+    public Account getAccount(String id) {
+        return null;
+    }
 }
