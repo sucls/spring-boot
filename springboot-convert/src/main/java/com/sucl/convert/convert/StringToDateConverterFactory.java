@@ -10,20 +10,21 @@ import java.util.Date;
 
 /**
  * 转换成同一种类型的转换
+ *
  * @author sucl
  * @date 2019/5/29
  */
 //方法④
 @Slf4j
-public class StringToDateConverterFactory implements ConverterFactory<String,Date> {
+public class StringToDateConverterFactory implements ConverterFactory<String, Date> {
 
     @Override
-    public <T extends Date> Converter<String,T> getConverter(Class<T> clazz) {
+    public <T extends Date> Converter<String, T> getConverter(Class<T> clazz) {
 
         return new StringToDate<T>(clazz);
     }
 
-    private static class StringToDate<T extends Date> implements Converter<String,T> {
+    private static class StringToDate<T extends Date> implements Converter<String, T> {
         private Class<T> targetType;
 
         public StringToDate(Class<T> targetType) {
@@ -37,7 +38,7 @@ public class StringToDateConverterFactory implements ConverterFactory<String,Dat
                 Date date = sdf.parse(source);
                 return (T) date;
             } catch (ParseException e) {
-                log.error("",e);
+                log.error("", e);
             }
             return null;
         }

@@ -34,25 +34,25 @@ public class RequestDataHandlerMethodArgumentResolver implements HandlerMethodAr
         Object param = BeanUtils.instantiate(paramClazz);
 
         Iterator<String> reqParams = webRequest.getParameterNames();
-        Map<String,String> paramMap = new HashMap<>();
-        while (reqParams.hasNext()){
+        Map<String, String> paramMap = new HashMap<>();
+        while (reqParams.hasNext()) {
             String propKey = reqParams.next();
-            paramMap.put(propKey,webRequest.getParameter(propKey));
+            paramMap.put(propKey, webRequest.getParameter(propKey));
         }
 
         BeanInfo beanInfo = Introspector.getBeanInfo(paramClazz);
         PropertyDescriptor[] pds = beanInfo.getPropertyDescriptors();
-        for(PropertyDescriptor pd : pds){
+        for (PropertyDescriptor pd : pds) {
             String prop = pd.getName();
             Class<?> propType = pd.getPropertyType();
             Method setMethod = pd.getWriteMethod();
-            if(setMethod!=null && propType == String.class)
-                setMethod.invoke(param,paramMap.get(prop));
+            if (setMethod != null && propType == String.class)
+                setMethod.invoke(param, paramMap.get(prop));
         }
         return param;
     }
 
-    private class ParamFieldCallback implements ReflectionUtils.FieldCallback{
+    private class ParamFieldCallback implements ReflectionUtils.FieldCallback {
         private List<String> properties = new ArrayList<>();
         private List<Class> propTypes = new ArrayList<>();
 

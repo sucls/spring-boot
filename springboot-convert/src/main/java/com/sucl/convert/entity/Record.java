@@ -19,7 +19,7 @@ public class Record {
 
     private String id;
 
-//    @JsonFormat
+    //    @JsonFormat
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 

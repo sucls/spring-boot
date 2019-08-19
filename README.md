@@ -13,7 +13,10 @@ bean配置
 	springboot-filter
 	
 拦截器
-springboot-intercepter		
+ springboot-intercepter		
+
+日志
+ springboot-log
 
 MVC
 	springboot-mvc

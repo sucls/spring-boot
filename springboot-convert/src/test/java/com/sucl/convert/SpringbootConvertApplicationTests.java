@@ -24,8 +24,10 @@ public class SpringbootConvertApplicationTests {
         System.out.println(stype.isAssignableTo(ptype));
     }
 
-    public class Pa{ }
+    public class Pa {
+    }
 
-    public class Sa extends Pa{ }
+    public class Sa extends Pa {
+    }
 
 }

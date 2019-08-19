@@ -17,14 +17,13 @@ import java.util.Date;
 public class TestControler {
 
     /**
-     *
      * @param date
      * @return
      */
     @GetMapping
     public Object test(@RequestParam("date")
 //                       @DateTimeFormat(pattern = "yyyy-MM-dd") // 方法②
-                       Date date){
+                               Date date) {
         return date;
     }
 
@@ -41,17 +40,17 @@ public class TestControler {
      * @return
      */
     @PostMapping("/array")
-    public Object array(String[] arr){
+    public Object array(String[] arr) {
         return arr;
     }
 
     @PostMapping("/record")
-    public Object record(@RequestBody Record record){
+    public Object record(@RequestBody Record record) {
         return record;
     }
 
     @PostMapping("/request")
-    public Object request(@RequestData Request request){
+    public Object request(@RequestData Request request) {
         return request;
     }
 

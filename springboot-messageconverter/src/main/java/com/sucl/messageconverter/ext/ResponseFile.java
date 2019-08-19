@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * @since 2019/8/7
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.METHOD,ElementType.TYPE})
+@Target({ElementType.METHOD, ElementType.TYPE})
 public @interface ResponseFile {
 
     String type() default "txt";

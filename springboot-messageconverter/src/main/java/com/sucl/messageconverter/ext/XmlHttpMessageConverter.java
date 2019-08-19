@@ -19,12 +19,12 @@ import java.nio.charset.Charset;
 public class XmlHttpMessageConverter extends AbstractHttpMessageConverter<Message> {
     public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
 
-    public XmlHttpMessageConverter(){
+    public XmlHttpMessageConverter() {
         this(DEFAULT_CHARSET);
     }
 
-    public XmlHttpMessageConverter(Charset charset){
-        super(charset,MediaType.ALL);
+    public XmlHttpMessageConverter(Charset charset) {
+        super(charset, MediaType.ALL);
     }
 
     @Override
@@ -40,8 +40,8 @@ public class XmlHttpMessageConverter extends AbstractHttpMessageConverter<Messag
     @Override
     protected void writeInternal(Message message, HttpOutputMessage outputMessage) throws IOException, HttpMessageNotWritableException {
         XStream xStream = new XStream();
-        xStream.alias("message",Message.class);
+        xStream.alias("message", Message.class);
 //        StreamUtils.copy(xStream.toXML(message), DEFAULT_CHARSET, outputMessage.getBody());
-        xStream.toXML(message,outputMessage.getBody());
+        xStream.toXML(message, outputMessage.getBody());
     }
 }

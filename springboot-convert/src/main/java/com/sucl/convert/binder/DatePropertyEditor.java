@@ -23,7 +23,7 @@ public class DatePropertyEditor extends PropertyEditorSupport {
         try {
             date = sdf.parse(text);
         } catch (ParseException e) {
-            log.error("",e);
+            log.error("", e);
         }
         super.setValue(date);
     }

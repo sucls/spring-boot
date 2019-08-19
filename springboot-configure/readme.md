@@ -1,0 +1,5 @@
+springboot configure
+
+相比springmvc，在springboot中最突出的处理内置了一些默认的配置外，就是免去了applicationContext.xml的配置，虽然通过配置形式从代码层面完成了
+对象关系管理的解耦，但是还是会显得比较繁琐（springboot中bean的关系也非常繁琐）
+

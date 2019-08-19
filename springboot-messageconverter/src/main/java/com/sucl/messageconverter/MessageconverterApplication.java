@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Slf4j
 @SpringBootApplication
-public class MessageconverterApplication implements CommandLineRunner{
+public class MessageconverterApplication implements CommandLineRunner {
     @Autowired
     private ApplicationContext applicationContext;
 
@@ -28,17 +28,17 @@ public class MessageconverterApplication implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
         Map<String, HandlerMapping> handlerMappingMap = applicationContext.getBeansOfType(HandlerMapping.class);
-        handlerMappingMap.values().forEach(mc->{
+        handlerMappingMap.values().forEach(mc -> {
             log.info(" HandlerMapping : " + mc.toString());
         });
 
         Map<String, HandlerMethodReturnValueHandler> handlerMethodReturnValueHandlerMap = applicationContext.getBeansOfType(HandlerMethodReturnValueHandler.class);
-        handlerMethodReturnValueHandlerMap.values().forEach(hv->{
+        handlerMethodReturnValueHandlerMap.values().forEach(hv -> {
             log.info(" handlerMethodReturnValueHandlerMap : " + hv.toString());
         });
 
         Map<String, HttpMessageConverter> messageConverterMap = applicationContext.getBeansOfType(HttpMessageConverter.class);
-        messageConverterMap.values().forEach(mc->{
+        messageConverterMap.values().forEach(mc -> {
             log.info(" HttpMessageConverter : " + mc.toString());
         });
 

@@ -32,7 +32,7 @@ public class StringToDateGenericConverter implements GenericConverter {
     //
     private ConversionService conversionService;
 
-    public StringToDateGenericConverter(Class<?> fieldType, Parser parser, ConversionService conversionService){
+    public StringToDateGenericConverter(Class<?> fieldType, Parser parser, ConversionService conversionService) {
         this.fieldType = fieldType;
         this.parser = parser;
         this.conversionService = conversionService;
@@ -40,7 +40,7 @@ public class StringToDateGenericConverter implements GenericConverter {
 
     @Override
     public Set<ConvertiblePair> getConvertibleTypes() {
-        return Collections.singleton(new ConvertiblePair(String.class,fieldType));
+        return Collections.singleton(new ConvertiblePair(String.class, fieldType));
     }
 
     @Override
@@ -52,17 +52,17 @@ public class StringToDateGenericConverter implements GenericConverter {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        if(result == null){
+        if (result == null) {
             return null;
         }
         TypeDescriptor resultClass = TypeDescriptor.valueOf(result.getClass());
-        if(!resultClass.isAssignableTo(targetTypeDescriptor)){//源不是目标的子类
+        if (!resultClass.isAssignableTo(targetTypeDescriptor)) {//源不是目标的子类
             result = conversionService.convert(result, resultClass, targetTypeDescriptor);
         }
         return result;
     }
 
-    public static class DateParser implements Parser<Date>{
+    public static class DateParser implements Parser<Date> {
 
         @Override
         public Date parse(String text, Locale locale) throws ParseException {

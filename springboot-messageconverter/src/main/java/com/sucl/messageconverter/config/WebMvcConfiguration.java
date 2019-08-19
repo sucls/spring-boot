@@ -23,7 +23,6 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
     }
 
 
-
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         super.configureMessageConverters(converters);
@@ -32,6 +31,6 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         super.extendMessageConverters(converters);
-        converters.add(0,new XmlHttpMessageConverter());
+        converters.add(0, new XmlHttpMessageConverter());
     }
 }

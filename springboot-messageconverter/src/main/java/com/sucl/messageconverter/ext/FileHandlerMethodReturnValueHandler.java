@@ -17,11 +17,12 @@ import java.util.UUID;
 
 /**
  * 注意顺序
- * @see RequestMappingHandlerAdapter#getDefaultReturnValueHandlers
+ *
  * @author sucl
+ * @see RequestMappingHandlerAdapter#getDefaultReturnValueHandlers
  * @since 2019/8/7
  */
-public class FileHandlerMethodReturnValueHandler implements HandlerMethodReturnValueHandler,Ordered {
+public class FileHandlerMethodReturnValueHandler implements HandlerMethodReturnValueHandler, Ordered {
     @Override
     public boolean supportsReturnType(MethodParameter returnType) {
         return (AnnotatedElementUtils.hasAnnotation(returnType.getContainingClass(), ResponseFile.class) ||
@@ -35,10 +36,10 @@ public class FileHandlerMethodReturnValueHandler implements HandlerMethodReturnV
         mavContainer.setRequestHandled(true);
 
         ResponseFile methodResponseFile = returnType.getMethodAnnotation(ResponseFile.class);
-        if(methodResponseFile == null){
+        if (methodResponseFile == null) {
             methodResponseFile = returnType.getContainingClass().getAnnotation(ResponseFile.class);
         }
-        Assert.notNull(methodResponseFile,"no ResponseFile at method :"+returnType.getMethod().getName());
+        Assert.notNull(methodResponseFile, "no ResponseFile at method :" + returnType.getMethod().getName());
 
         String fileType = methodResponseFile.type();
 
@@ -46,21 +47,21 @@ public class FileHandlerMethodReturnValueHandler implements HandlerMethodReturnV
 
         response.setHeader("content-type", "application/octet-stream");
         response.setContentType("application/octet-stream");
-        response.setHeader("Content-Disposition", "attachment;filename="+UUID.randomUUID().toString()+"."+fileType);
+        response.setHeader("Content-Disposition", "attachment;filename=" + UUID.randomUUID().toString() + "." + fileType);
 
         ServletOutputStream out = response.getOutputStream();
 
-        if(returnValue  instanceof ResponseFileEntity){
-            FileCopyUtils.copy(((ResponseFileEntity) returnValue).getIn(),out);
-        }else{
-            FileCopyUtils.copy(new ByteArrayInputStream("non".getBytes()),out);
+        if (returnValue instanceof ResponseFileEntity) {
+            FileCopyUtils.copy(((ResponseFileEntity) returnValue).getIn(), out);
+        } else {
+            FileCopyUtils.copy(new ByteArrayInputStream("non".getBytes()), out);
         }
 
 //        response.getWriter().write(returnValue.toString());
 
     }
 
-    public HttpServletResponse getServletResponse(NativeWebRequest webRequest){
+    public HttpServletResponse getServletResponse(NativeWebRequest webRequest) {
         HttpServletResponse response = webRequest.getNativeResponse(HttpServletResponse.class);
 //        return new ServletServerHttpResponse(response);
         return response;
@@ -68,6 +69,6 @@ public class FileHandlerMethodReturnValueHandler implements HandlerMethodReturnV
 
     @Override
     public int getOrder() {
-        return Ordered.LOWEST_PRECEDENCE-10;
+        return Ordered.LOWEST_PRECEDENCE - 10;
     }
 }

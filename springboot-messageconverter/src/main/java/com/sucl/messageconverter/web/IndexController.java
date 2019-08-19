@@ -21,13 +21,13 @@ public class IndexController {
 
     @ResponseBody
     @GetMapping("/hello")
-    public String index(){
+    public String index() {
         return "hello world";
     }
 
     @ResponseFile
     @GetMapping("/file")
-    public ResponseFileEntity toFile(){
+    public ResponseFileEntity toFile() {
         ResponseFileEntity responseFileEntity = new ResponseFileEntity();
         responseFileEntity.setIn(new ByteArrayInputStream("这是一段测试文字".getBytes()));
         return responseFileEntity;
@@ -35,7 +35,7 @@ public class IndexController {
 
     @ResponseBody
     @GetMapping("/message")
-    public Message message(){
+    public Message message() {
         Message message = new Message();
         message.setId(UUID.randomUUID().toString());
         message.setDate(new Date());
