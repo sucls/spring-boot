@@ -1,4 +1,4 @@
-package com.sucl.springbootlog;
+package com.sucl.log;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
